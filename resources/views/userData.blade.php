@@ -2,7 +2,7 @@
 <!DOCTYPE html> 
 <html> 
 <head> 
-    <title>GeeksforGeeks</title> 
+    <title>User Data</title> 
 </head> 
 <body> 
 <h1>User Data</h1>

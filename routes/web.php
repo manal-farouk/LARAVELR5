@@ -2,23 +2,35 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyController;
+use App\Http\Controllers\ClientController;
 
 Route::get('test50', [MyController::class, 'my_data']);
+
+Route::get('insertClient', [ClientController::class, 'store']);
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 
-Route::get('test', function(){
-    return view('test');
-    });
+// Route::get('test', function(){
+//     return view('test');
+//     });
 
-Route::get('form1', function(){
-    return view('form1');
-        });
+// Route::get('form1', function(){
+//     return view('form1');
 
-    Route::post('/save-user-data', 'App\Http\Controllers\UserController@saveUserData')->name('saveUserData');
+//         });
+
+     
+    Route::get('form2',[ClientController::class, 'create']);
+
+    Route::post('insertClientForm2', [ClientController::class, 'store'])
+    ->name('receiveForm2');
+
+    Route::get('insertClient', [ClientController::class, 'create'])->name('createClient');
+
+    // Route::post('/save-user-data', 'App\Http\Controllers\UserController@saveUserData')->name('saveUserData');
 
 // Route::get('manalferr/{id?}' , function($id=0){
 
