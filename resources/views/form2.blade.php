@@ -12,13 +12,13 @@
 <form action="{{ route('receiveForm2') }}" method="post">
     @csrf
     <label for="clientName">Client Name</label><br>
-    <input type="text" id="clientName" name="clientName" value="Egypt Air"><br>
+    <input type="text" id="clientName" name="clientName" value=""><br>
     <label for="phone">Phone</label><br>
-    <input type="text" id="phone" name="phone" value="2222222"><br>
+    <input type="text" id="phone" name="phone" value=""><br>
     <label for="email">Email</label><br>
-    <input type="email" id="email" name="email" value="EgyptAir@gmail.com"><br>
+    <input type="email" id="email" name="email" value=""><br>
     <label for="website">Wwbsite</label><br>
-    <input type="text" id="website" name="website" value="https://egyptair.com"><br><br>
+    <input type="text" id="website" name="website" value=""><br><br>
     <input type="submit" value="submit">
 </form> 
 
