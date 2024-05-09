@@ -20,13 +20,17 @@ Route::get('studentForm',[StudentController::class, 'create'])->name('createStud
 Route::post('insertStudentForm', [StudentController::class, 'store'])
 ->name('receivestudentForm');
 
+//student form task session 4
+
+Route::post('insertStudent',  [StudentController::class, 'store'])->name('insertStudent'); 
+    Route::get('addStudent',[StudentController::class, 'create'])->name('addStudent');
+    Route::get('students'  , [StudentController::class, 'index'])->name('students');
 
 //client form during session 2
-     
-    Route::get('form2',[ClientController::class, 'create'])->name('createClient');
+Route::post('insertClient', [ClientController::class, 'store'])->name('insertClient'); 
+    Route::get('addClient',[ClientController::class, 'create'])->name('addClient');
+    Route::get('clients'  ,[ClientController::class, 'index'])->name('clients');
 
-    Route::post('insertClientForm2', [ClientController::class, 'store'])
-    ->name('receiveForm2');
 
    // Route::get('insertClient', [ClientController::class, 'create'])->name('createClient');
 

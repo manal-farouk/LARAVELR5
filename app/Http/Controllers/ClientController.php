@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Client;
-
-
 class ClientController extends Controller
 {
+    private $columns = ['clientName','phone' ,'email' , 'website'];
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $clients = Client::get();
+        return view('clients', compact('clients'));
     }
 
     /**
@@ -21,7 +21,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('form2');
+        return view('addClient');
     }
 
     /**
@@ -29,13 +29,16 @@ class ClientController extends Controller
      */
     public function store(Request $req)
     {
-    $client = new Client() ;
-    $client->clientName =$req->clientName;
-    $client->phone = $req->phone;
-    $client->email=$req->email;
-    $client->website =$req->website;
-    $client->save ();
-  
+    // $client = new Client() ;
+    // $client->clientName =$req->clientName;
+    // $client->phone = $req->phone;
+    // $client->email=$req->email;
+    // $client->website =$req->website;
+    // $client->save ();
+    {
+        Client::create($req->only($this->columns));
+        return redirect('clients');
+        }
 return 'inserted Successfully';
     }
 
