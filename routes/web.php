@@ -13,23 +13,34 @@ Route::get('form1', function(){
         });
 Route::post('/save-user-data', 'App\Http\Controllers\UserController@saveUserData')->name('saveUserData');
 
-//student form task session 3
+//student form task session 3 
 
 Route::get('studentForm',[StudentController::class, 'create'])->name('createStudent');
 
 Route::post('insertStudentForm', [StudentController::class, 'store'])
 ->name('receivestudentForm');
 
-//student form task session 4
+//student form task session 4 
 
 Route::post('insertStudent',  [StudentController::class, 'store'])->name('insertStudent'); 
     Route::get('addStudent',[StudentController::class, 'create'])->name('addStudent');
     Route::get('students'  , [StudentController::class, 'index'])->name('students');
+   
+//student form task session 5
+Route::get("editStudents/{id}", [StudentController::class,"edit"])->name('editStudents');
+Route::put("updateStudents/{id}", [StudentController::class,"update"])->name('updateStudents');
+Route::get("showStudent/{id}", [StudentController::class,"show"])->name('showStudent');
+Route::delete("deletStudent", [StudentController::class,"destroy"])->name('deletStudent');
+
 
 //client form during session 2
 Route::post('insertClient', [ClientController::class, 'store'])->name('insertClient'); 
     Route::get('addClient',[ClientController::class, 'create'])->name('addClient');
     Route::get('clients'  ,[ClientController::class, 'index'])->name('clients');
+    Route::get("editClients/{id}", [ClientController::class,"edit"])->name('editClients');
+    Route::put("updateClients/{id}", [ClientController::class,"update"])->name('updateClients');
+    Route::get("showClient/{id}", [ClientController::class,"show"])->name('showClient');
+    Route::delete("delete", [ClientController::class,"destroy"])->name('delClient');
 
 
    // Route::get('insertClient', [ClientController::class, 'create'])->name('createClient');

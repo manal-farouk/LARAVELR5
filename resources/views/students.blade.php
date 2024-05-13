@@ -20,7 +20,9 @@
         <th>First_name</th>
         <th>Last_name</th>
         <th>Age</th>
-      </tr>
+        <th>Edit</th>
+        <th>Show</th>
+</tr>
     </thead>
     <tbody>
 
@@ -30,8 +32,20 @@
         <td>{{$student->first_name}}</td>
         <td>{{$student->last_name}}</td>
         <td>{{$student->age}}</td>
-      
-      
+        <td><a href="editStudents/{{ $student->id }}">Edit</a></td>
+        <td><a href="showStudent/{{ $student->id }}">Show</a></td>
+       
+        <td>
+
+
+        <form action="{{route('deletStudent')}}" method="post">
+    @csrf
+    @method('DELETE')
+    <input type="hidden" value="{{ $student->id }}" name="id">
+    <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete?')">
+</form>
+</td>
+
       </tr>
       @endforeach
     </tbody>

@@ -27,6 +27,7 @@ class ClientController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
     public function store(Request $req)
     {
     // $client = new Client() ;
@@ -35,11 +36,11 @@ class ClientController extends Controller
     // $client->email=$req->email;
     // $client->website =$req->website;
     // $client->save ();
-    {
+
         Client::create($req->only($this->columns));
         return redirect('clients');
-        }
-return 'inserted Successfully';
+        
+// return 'inserted Successfully';
     }
 
 
@@ -48,7 +49,9 @@ return 'inserted Successfully';
      */
     public function show(string $id)
     {
-        //
+        
+        $client = Client::findOrFail($id);
+        return view('showClient', compact('client'));
     }
 
     /**
@@ -56,7 +59,10 @@ return 'inserted Successfully';
      */
     public function edit(string $id)
     {
-        //
+        $client = Client::findOrFail($id);
+        return view('editClients', compact('client'));
+        
+
     }
 
     /**
@@ -64,14 +70,18 @@ return 'inserted Successfully';
      */
     public function update(Request $request, string $id)
     {
-        //
+        Client::where('id', $id)->update($request->only($this->columns));
+return redirect('clients');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->id;
+       
+        Client::where('id', $id)->delete();
+        return redirect('clients');
     }
 }
