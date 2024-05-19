@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Students</title>
+  <title>Student Trash</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -13,7 +13,7 @@
  @include('includes.navStudent')
 
 <div class="container">
-  <h2>Student Data</h2>
+  <h2>Student Trash</h2>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -22,7 +22,7 @@
         <th>Age</th>
         <th>Edit</th>
         <th>Show</th>
-        <th>Delete</th>
+        <th>Trash</th>
 </tr>
     </thead>
     <tbody>
@@ -33,17 +33,13 @@
         <td>{{$student->first_name}}</td>
         <td>{{$student->last_name}}</td>
         <td>{{$student->age}}</td>
-        <td><a href="editStudents/{{ $student->id }}">Edit</a></td>
+        <td><a href="{{route('restoreStudent', $student->id) }}">Restore</a></td>
         <td><a href="showStudent/{{ $student->id }}">Show</a></td>
-       
-        <td>
-
-
-        <form action="{{ route('delStudent') }}" method="post">
- @csrf
- @method('DELETE')
-<input type="hidden" value="{{ $student->id }}" name="id" >
-<input type="submit" value="delete" onclick="return confirm('Are you sure you want to delete?')">
+<form action="{{ route('forceDelete') }}" method="post">
+    @csrf
+    @method('DELETE')
+    <input type="hidden" value="{{ $student->id }}" name="id">
+    <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete?')">
 </form>
 </td>
 

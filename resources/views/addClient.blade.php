@@ -16,12 +16,26 @@
 <form action="{{ route('insertClient') }}" method="post">
     @csrf
     <label for="clientName">Client Name</label><br>
+ 
+    @error('clientName')
+    <p style="color:red">{{ $message }} </p>
+    @enderror
+
     <input type="text" id="clientName" name="clientName" value="" class="form-control"> <br>
     <label for="phone">Phone</label><br>
+    @error('phone')
+    <p style="color:red">{{ $message }} </p>
+    @enderror
     <input type="text" id="phone" name="phone" value="" class="form-control"><br>
     <label for="email">Email</label><br>
+    @error('email')
+    <p style="color:red">{{ $message }} </p>
+    @enderror
     <input type="email" id="email" name="email" value="" class="form-control"><br>
     <label for="website">Wbsite</label><br>
+    @error('website')
+    <p style="color:red">{{ $message }} </p>
+    @enderror
     <input type="text" id="website" name="website" value="" class="form-control"><br><br>
     <input type="submit" value="submit">
 </form> 

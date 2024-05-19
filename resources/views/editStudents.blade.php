@@ -19,10 +19,19 @@
     @method('put')
 
     <label for="First_Name">Firs_Name</label><br>
-    <input type="text" id="firstName" name="first_name" value="{{$student->first_name}}" class="form-control"> <br>
+    @error('first_Name')
+    <p style="color:red">{{ $message }} </p>
+    @enderror
+    <input type="text" id="first_Name" name="first_name" value="{{$student->first_name}}" class="form-control"> <br>
     <label for="Last_Name">Last_Name</label><br>
+    @error('last_name')
+    <p style="color:red">{{ $message }} </p>
+    @enderror
     <input type="text" id="last_name" name="last_name" value="{{$student->last_name}}" class="form-control"><br>
     <label for="Age">Age</label><br>
+    @error('age')
+    <p style="color:red">{{ $message }} </p>
+    @enderror
     <input type="text" id="age" name="age" value="{{$student->age}}" class="form-control"><br>
    <input type="submit" value="submit">
 </form> 

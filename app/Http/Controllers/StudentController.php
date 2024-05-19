@@ -35,14 +35,18 @@ class StudentController extends Controller
         // $student->first_name =$req->first_name;
         // $student->last_name  =$req->last_name;
         // $student->age        = $req->age;
-    
-        // $student->save ();
-        {
-            Student::create($req->only($this->columns));
+        //$student->save ();
+        $data = $req->validate([
+            'first_name' => 'required|max:100,min:5',
+            'last_name' => 'required|max:100,min:5',
+            'age' => 'required'
+            ]);
+        
+            Student::create($data);
             return redirect('students');
-            }
+            
       
-    return 'inserted Successfully';
+//return 'inserted Successfully';
     }
 
     /**
@@ -69,6 +73,12 @@ class StudentController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'first_name' => 'required|max:100,min:5',
+            'last_name' => 'required|max:100,min:5',
+            'age' => 'required'
+            ]);
+        
         student::where('id', $id)->update($request->only($this->columns));
         return redirect('students');
     }
@@ -83,4 +93,31 @@ class StudentController extends Controller
         Student::where('id', $id)->delete();
         return redirect('students');
     }
-}
+       /*trash.*/
+       public function trash()
+       {
+       $trashed = Student::onlyTrashed()->get();
+       return view('trashStudent', compact('trashed'));
+       }
+   
+       /*Resrore.*/
+       public function restore(string $id)
+       {
+        Student::where('id', $id)->restore();
+           
+       return redirect('students');
+       }
+   
+        /*force delet.*/
+       public function forceDelete(Request $request)
+       {
+       $id = $request->id;
+          
+       Student::where('id', $id)->forceDelete();
+       
+       return redirect('trashStudent');
+       }
+   
+   
+   }
+   

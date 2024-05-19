@@ -23,24 +23,34 @@ Route::post('insertStudentForm', [StudentController::class, 'store'])
 //student form task session 4 
 
 Route::post('insertStudent',  [StudentController::class, 'store'])->name('insertStudent'); 
-    Route::get('addStudent',[StudentController::class, 'create'])->name('addStudent');
-    Route::get('students'  , [StudentController::class, 'index'])->name('students');
+Route::get('addStudent',[StudentController::class, 'create'])->name('addStudent');
+Route::get('students'  , [StudentController::class, 'index'])->name('students');
    
 //student form task session 5
 Route::get("editStudents/{id}", [StudentController::class,"edit"])->name('editStudents');
 Route::put("updateStudents/{id}", [StudentController::class,"update"])->name('updateStudents');
 Route::get("showStudent/{id}", [StudentController::class,"show"])->name('showStudent');
-Route::delete("deletStudent", [StudentController::class,"destroy"])->name('deletStudent');
+Route::delete("delete", [StudentController::class,"destroy"])->name('delStudent');
 
 
-//client form during session 2
-Route::post('insertClient', [ClientController::class, 'store'])->name('insertClient'); 
+//student form task session 6
+Route::delete("forceDelete", [StudentController::class,"forceDelete"])->name('forceDelete');
+Route::get("trashStudent", [StudentController::class,"trash"])->name('trashStudent');
+Route::get("restoreStudent/{id}", [StudentController::class,"restore"])->name('restoreStudent');
+
+//client form during session 2 to 6
+    Route::post('insertClient', [ClientController::class, 'store'])->name('insertClient'); 
     Route::get('addClient',[ClientController::class, 'create'])->name('addClient');
     Route::get('clients'  ,[ClientController::class, 'index'])->name('clients');
     Route::get("editClients/{id}", [ClientController::class,"edit"])->name('editClients');
     Route::put("updateClients/{id}", [ClientController::class,"update"])->name('updateClients');
     Route::get("showClient/{id}", [ClientController::class,"show"])->name('showClient');
     Route::delete("delete", [ClientController::class,"destroy"])->name('delClient');
+   
+    Route::delete("forceDelete", [ClientController::class,"forceDelete"])->name('forceDelete');
+    Route::get("trashClient", [ClientController::class,"trash"])->name('trashClient');
+    Route::get("restoreClient/{id}", [ClientController::class,"restore"])->name('restoreClient');
+    
 
 
    // Route::get('insertClient', [ClientController::class, 'create'])->name('createClient');
