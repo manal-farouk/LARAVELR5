@@ -15,15 +15,11 @@
       <a class="navbar-brand" href="#">WebSiteName</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="{{route('addClient')}}">Clients</a></li>
-      <li class="active"><a href="{{route('addStudent')}}">Students</a></li>
-    
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Trash <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="{{route('trashClient')}}">Client Trash</a></li>
-          <li><a href="{{route('trashStudent')}}">Student Trash</a></li>
-          <li><a href="#">Page 1-3</a></li>
-        </ul>
+        <li class="active"><a href="{{ route('addClient') }}">Add</a></li>
+        <li><a href="{{ route('clients') }}">Clients</a></li>
+        <li><a href="{{ route('trashClient') }}">Trash</a></li>
+        <li><a href="#">Page 3</a></li>
+      </ul>
       </li>
       <li><a href="#"></a></li>
       <li><a href="#"></a></li>

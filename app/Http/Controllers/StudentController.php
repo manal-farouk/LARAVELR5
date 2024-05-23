@@ -7,7 +7,7 @@ use App\Models\Student;
 
 class StudentController extends Controller
 {
-    private $columns = ['first_name','last_name' ,'age' ];
+   // private $columns = ['first_name','last_name' ,'age' ];
     /**
      * Display a listing of the resource.
      */

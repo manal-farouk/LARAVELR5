@@ -10,7 +10,7 @@
   
   @include('includes.nav')
 
-<div class="container" style="margin-left: 20px ">
+  <div class="container" style="width: 600px  ">
 
 <h2>Edit Client</h2>
 
@@ -43,7 +43,34 @@
     @enderror
     
     <input type="text" id="website" name="website" value="{{$client->website}}" class="form-control"><br><br>
-    <input type="submit" value="submit">
-</form> 
+    
+    <label for="city">City:</label><br>
+    <p style="color: red">
+      @error('city')
+        {{ $message }}
+      @enderror
+    </p>
+    <select name="city" id="City" class="form-control">
+      <option value="">Please Select City</option>
+      <option value="Cairo" {{ old('city', $client->city) === 'Cairo' ? 'selected' : '' }}>Cairo</option>
+      <option value="Giza" {{ old('city', $client->city) === 'Giza' ? 'selected' : '' }}>Giza</option>
+      <option value="Alex" {{ old('city', $client->city) === 'Alex' ? 'selected' : '' }}>Alex</option>
+    </select>
+    <br><br>
+    <label for="active">Active:</label><br>
+<input type="checkbox" id="active" name="active"  value="{{$client->active}}"  class="" {{ old('active') ? 'checked' : '' }}><br><br>
+
+<p><img src="{{ asset('assets/images/' . $client->image) }}" alt="Client Image" style="width:300px;height:400px;"></p>
+<label for="image">Image:</label><br>
+@error('image')
+        {{ $message }}
+      @enderror
+<input type="file" id="image" name="image" accept="image/*" class="form-control"><br><br>
+
+
+    <input type="submit" value="Submit">
+  </form> 
+</div>
 
 </body>
+</html>
