@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Traits\UploadFile;
 use Illuminate\Http\Request;
 use App\Models\Client;
 class ClientController extends Controller
 
-{
+{use UploadFile;
     private $columns = ['clientName','phone' ,'email' , 'website','city' , 'active', 'image'];
     /*Display a listing of the resource.*/
     public function index()
@@ -41,10 +41,11 @@ class ClientController extends Controller
         'city' => 'required|max:30',
         'image' => 'required',
         ],$messages);
-        $imgExt = $req->image->getClientOriginalExtension();
-        $fileName = time() . '.' . $imgExt;
-        $path = 'assets/images';
-        $req->image->move($path, $fileName);
+        // $imgExt = $req->image->getClientOriginalExtension();
+        // $fileName = time() . '.' . $imgExt;
+        // $path = 'assets/images';
+        // $req->image->move($path, $fileName);
+        $fileName = $this->upload($req->image, 'assets/images');
         $data['image'] = $fileName;
         $data['active'] = isset($req->active) ;
         Client::create($data);

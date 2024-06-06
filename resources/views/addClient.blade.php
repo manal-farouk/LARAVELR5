@@ -51,7 +51,7 @@
       <option value="Alex" {{ old('city') == 'Alex'  ? 'selected' : '' }}>Alex</option>
       </select>
 
-      <input type="checkbox" id="active" name="active" value="{{old('active') }}">
+      <input type="checkbox" id="active" name="active" value ="{{ old('active') ? 'checked' : '' }}">
       <label for="active">Active</label>
 <br><br>
     <label for="image">Image:</label><br>
