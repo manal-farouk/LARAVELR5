@@ -13,19 +13,19 @@ Route::get('form1', function(){
         });
 Route::post('/save-user-data', 'App\Http\Controllers\UserController@saveUserData')->name('saveUserData');
 
-//student form task session 3 
+//student form task session 3
 
 Route::get('studentForm',[StudentController::class, 'create'])->name('createStudent');
 
 Route::post('insertStudentForm', [StudentController::class, 'store'])
 ->name('receivestudentForm');
 
-//student form task session 4 
+//student form task session 4
 
-Route::post('insertStudent',  [StudentController::class, 'store'])->name('insertStudent'); 
+Route::post('insertStudent',  [StudentController::class, 'store'])->name('insertStudent');
 Route::get('addStudent',[StudentController::class, 'create'])->name('addStudent');
 Route::get('students'  , [StudentController::class, 'index'])->name('students');
-   
+
 //student form task session 5
 Route::get("editStudents/{id}", [StudentController::class,"edit"])->name('editStudents');
 Route::put("updateStudents/{id}", [StudentController::class,"update"])->name('updateStudents');
@@ -37,20 +37,22 @@ Route::delete("delete", [StudentController::class,"destroy"])->name('delStudent'
 Route::delete("forceDelete", [StudentController::class,"forceDelete"])->name('forceDelete');
 Route::get("trashStudent", [StudentController::class,"trash"])->name('trashStudent');
 Route::get("restoreStudent/{id}", [StudentController::class,"restore"])->name('restoreStudent');
+//student form task session 11
+Route::get('/students/{id}/courses', [StudentController::class, 'showCourses'])->name('courses');
 
 //client form during session 2 to 6
-    Route::post('insertClient', [ClientController::class, 'store'])->name('insertClient'); 
+    Route::post('insertClient', [ClientController::class, 'store'])->name('insertClient');
     Route::get('addClient',[ClientController::class, 'create'])->name('addClient');
     Route::get('clients'  ,[ClientController::class, 'index'])->name('clients');
     Route::get("editClients/{id}", [ClientController::class,"edit"])->name('editClients');
     Route::put("updateClients/{id}", [ClientController::class,"update"])->name('updateClients');
     Route::get("showClient/{id}", [ClientController::class,"show"])->name('showClient');
     Route::delete("delete", [ClientController::class,"destroy"])->name('delClient');
-   
+
     Route::delete("forceDelete", [ClientController::class,"forceDelete"])->name('forceDelete');
     Route::get("trashClient", [ClientController::class,"trash"])->name('trashClient');
     Route::get("restoreClient/{id}", [ClientController::class,"restore"])->name('restoreClient');
-    
+
 
 
    // Route::get('insertClient', [ClientController::class, 'create'])->name('createClient');
@@ -98,7 +100,7 @@ Route::get("restoreStudent/{id}", [StudentController::class,"restore"])->name('r
         //    // return 'The requierd is not found';
         //     return redirect('/');
         //     });
-            
+
 
 
 
@@ -113,7 +115,7 @@ Route::get("restoreStudent/{id}", [StudentController::class,"restore"])->name('r
         //     return '$lastName';
         //     })->name('receiveForm3');
 
-            
+
             // Route::get('form1', function(){
             //     return view('formData');
             //     });
@@ -124,7 +126,7 @@ Route::get("restoreStudent/{id}", [StudentController::class,"restore"])->name('r
         //     return view('formData', ['$lastName' => 'Last_Name']);
         // })->name('receiveForm2');
 
- 
+
 
             // Route::get('/', function () {
             //     $firstNameTit = 'First Name';
@@ -138,7 +140,7 @@ Route::get("restoreStudent/{id}", [StudentController::class,"restore"])->name('r
         //  Route::get('/', function () {
         //     $firstName = 'FirstName';
         //     //$lastName = 'lastName';
-            
+
         //     return view('formData')->with('FirstName', $firstName)->
         //                  with('articlePublished', 'On GeeksforGeeks');
         //  })->name('receiveForm1');
@@ -146,23 +148,22 @@ Route::get("restoreStudent/{id}", [StudentController::class,"restore"])->name('r
         Route::get('/', function () {
             return view('welcome');
         });
-        
+
         Route::get('test', function(){
             return view('test');
             });
-        
-
-         
-
-    
-   
 
 
 
-       
-        
-    
-            
-            
-        
- 
+
+
+
+
+
+
+
+
+
+
+
+

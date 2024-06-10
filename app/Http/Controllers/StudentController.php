@@ -28,7 +28,7 @@ class StudentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    
+
         public function store(Request $req)
         {
         // $student = new Student() ;
@@ -41,11 +41,11 @@ class StudentController extends Controller
             'last_name' => 'required|max:100,min:5',
             'age' => 'required'
             ]);
-        
+
             Student::create($data);
             return redirect('students');
-            
-      
+
+
 //return 'inserted Successfully';
     }
 
@@ -65,7 +65,7 @@ class StudentController extends Controller
     {
         $student = student::findOrFail($id);
         return view('editStudents', compact('student'));
-        
+
     }
 
     /**
@@ -78,7 +78,7 @@ class StudentController extends Controller
             'last_name' => 'required|max:100,min:5',
             'age' => 'required'
             ]);
-        
+
         student::where('id', $id)->update($request->only($this->columns));
         return redirect('students');
     }
@@ -89,7 +89,7 @@ class StudentController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->id;
-       
+
         Student::where('id', $id)->delete();
         return redirect('students');
     }
@@ -99,25 +99,32 @@ class StudentController extends Controller
        $trashed = Student::onlyTrashed()->get();
        return view('trashStudent', compact('trashed'));
        }
-   
+
        /*Resrore.*/
        public function restore(string $id)
        {
         Student::where('id', $id)->restore();
-           
+
        return redirect('students');
        }
-   
+
         /*force delet.*/
        public function forceDelete(Request $request)
        {
        $id = $request->id;
-          
+
        Student::where('id', $id)->forceDelete();
-       
+
        return redirect('trashStudent');
        }
-   
-   
+
+
    }
-   
+
+
+$students = Student::all(); // Retrieve all students
+
+// Pass the students to your view
+return view('students.courses', compact('students'));
+
+$students = Student::with('courses.latest')->get();

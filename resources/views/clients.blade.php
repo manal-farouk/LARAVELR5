@@ -11,7 +11,7 @@
 <body>
 
  @include('includes.nav')
- 
+
 <div class="container">
   <h2>Clients Data</h2>
   <table class="table table-hover">

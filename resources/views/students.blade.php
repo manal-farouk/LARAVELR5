@@ -35,8 +35,23 @@
         <td>{{$student->age}}</td>
         <td><a href="editStudents/{{ $student->id }}">Edit</a></td>
         <td><a href="showStudent/{{ $student->id }}">Show</a></td>
-       
+
         <td>
+
+            <!-- In your Blade view -->
+@foreach($students as $student)
+<h2>{{ $student->first_name }} {{ $student->last_name }}</h2>
+<ul>
+    @foreach($student->courses as $course)
+        <li>{{ $course->name }}</li>
+    @endforeach
+</ul>
+@endforeach
+
+@foreach($students as $student)
+    <h2>{{ $student->first_name }} {{ $student->last_name }}</h2>
+    <p>Last Course: {{ $student->courses->latest->name }}</p>
+@endforeach
 
 
         <form action="{{ route('delStudent') }}" method="post">

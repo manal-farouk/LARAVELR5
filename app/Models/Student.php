@@ -7,14 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 class Student extends Model
 {
-   
+
     use HasFactory, SoftDeletes;
-    
+
     protected $fillable = [
         'first_name',
         'last_name',
         'age',
 
         ];
-        
+
+}
+
+
+class Student extends Model
+{
+    // Define a hasMany relationship with the Course model
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
 }

@@ -1,30 +1,32 @@
 <?php
 
-use Illuminate\Database\Seeder;
+namespace Database\Seeders;
 use App\Models\Client;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
 
 class ClientSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         $faker = Faker::create();
 
-        for ($i = 0; $i < 50; $i++) { // Create 50 sample clients
-            ClientSeeder::create([
-                'clientName' => $faker->company,
+            DB::table('clients')->insert([
+                'ClientName' => $faker->name,
                 'phone' => $faker->phoneNumber,
                 'email' => $faker->unique()->safeEmail,
-                'website' => $faker->domainName,
-                'city' => $faker->city,
-                'image' => 'assets/images/placeholder.jpg', // Replace with a placeholder image path
-                'active' => true,
+                'website' => $faker->url,
+                'city_id' => $faker->numberBetween(1, 20),
+                'image' => 'image.jpg',
+                'active' => $faker->boolean,
+                'address' => $faker->address,
+                'created_at' => now(),
+                'updated_at' => now(),
             ]);
-        }
+
     }
 }
