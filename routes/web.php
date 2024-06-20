@@ -43,7 +43,8 @@ Route::get('/students/{id}/courses', [StudentController::class, 'showCourses'])-
 //client form during session 2 to 6
     Route::post('insertClient', [ClientController::class, 'store'])->name('insertClient');
     Route::get('addClient',[ClientController::class, 'create'])->name('addClient');
-    Route::get('clients'  ,[ClientController::class, 'index'])->name('clients');
+    Route::get('clients'  ,[ClientController::class, 'index'])->middleware('verified')->name('clients');
+
     Route::get("editClients/{id}", [ClientController::class,"edit"])->name('editClients');
     Route::put("updateClients/{id}", [ClientController::class,"update"])->name('updateClients');
     Route::get("showClient/{id}", [ClientController::class,"show"])->name('showClient');
@@ -167,3 +168,6 @@ Route::get('/students/{id}/courses', [StudentController::class, 'showCourses'])-
 
 
 
+ Auth::routes(['verify'=>true]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

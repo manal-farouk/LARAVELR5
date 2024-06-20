@@ -5,26 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\models\Course;
+
 class Student extends Model
 {
-
     use HasFactory, SoftDeletes;
+protected $fillable = [
+    'first_name',
+    'last_name',
+    'course_id',
+    'age',
 
-    protected $fillable = [
-        'first_name',
-        'last_name',
-        'age',
-
-        ];
-
-}
-
-
-class Student extends Model
+];
+public function course()
 {
-    // Define a hasMany relationship with the Course model
-    public function courses()
-    {
-        return $this->hasMany(Course::class);
-    }
+    return $this->belongsTo(Course::class);
 }
+}
+
+
+
+

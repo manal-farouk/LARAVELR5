@@ -125,6 +125,6 @@ class StudentController extends Controller
 $students = Student::all(); // Retrieve all students
 
 // Pass the students to your view
-return view('students.courses', compact('students'));
+// return view('students.courses', compact('students'));
 
-$students = Student::with('courses.latest')->get();
+// $students = Student::with('courses.latest')->get();

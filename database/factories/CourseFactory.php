@@ -17,7 +17,7 @@ class CourseFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence(4),
+            'course' => $this->faker->sentence(4),
             'created_at' => now(),
             'updated_at' => now(),
         ];

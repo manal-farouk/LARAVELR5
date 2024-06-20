@@ -39,19 +39,19 @@
         <td>
 
             <!-- In your Blade view -->
-@foreach($students as $student)
-<h2>{{ $student->first_name }} {{ $student->last_name }}</h2>
-<ul>
-    @foreach($student->courses as $course)
-        <li>{{ $course->name }}</li>
+{{--@foreach($students as $student)
+<h2>{{ $student->first_name }} {{ $student->last_name }}</h2> --}}
+{{-- //<ul>
+    {{-- @foreach($student->courses as $course)
+        <li>{{ $course->course_id }}</li>
     @endforeach
 </ul>
-@endforeach
+@endforeach --}}
 
-@foreach($students as $student)
+{{-- @foreach($students as $student)
     <h2>{{ $student->first_name }} {{ $student->last_name }}</h2>
     <p>Last Course: {{ $student->courses->latest->name }}</p>
-@endforeach
+@endforeach --}}
 
 
         <form action="{{ route('delStudent') }}" method="post">

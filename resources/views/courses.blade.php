@@ -46,7 +46,7 @@
     <ul>
 
         @foreach($courses as $course)
-        <li>{{ $course->title}}</li>
+        <li>{{ $course->course}}</li>
     @endforeach
 
     </ul>

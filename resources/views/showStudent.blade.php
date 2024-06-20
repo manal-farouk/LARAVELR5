@@ -12,6 +12,7 @@
     <h3><strong>Last_Name: </strong>{{ $student->last_name }}</h3>
     <hr>
     <h3><strong>Age: </strong>{{ $student->age }}</h3>
+    <h3><strong>Course: </strong>{{ $student->Course->course }}</h3>
 
 </body>
 </html>

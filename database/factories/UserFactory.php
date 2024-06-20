@@ -28,7 +28,11 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
+            'mobileNumber' => $this->faker->numerify('###-###-####'),
+            'age' => $this->faker->numberBetween(18, 80),
+            'gender' => $this->faker->randomElement(['Male', 'Female', 'Non-binary']),
+            'nationality' => $this->faker->randomElement(['USA', 'UK', 'egypt', 'Germany']),
+            'remember_token' => Str::random(30),
         ];
     }
 
@@ -42,4 +46,3 @@ class UserFactory extends Factory
         ]);
     }
 }
-  

@@ -1,12 +1,15 @@
 <?php
 
 namespace Database\Seeders;
-use Illuminate\Support\Facades\DB;
-use Faker\Factory as Faker;
+
+use App\Models\Course;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
 
 class CourseSeeder extends Seeder
+
 {
     /**
      * Run the database seeds.
@@ -14,10 +17,13 @@ class CourseSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create();
+
         DB::table('courses')->insert([
-            'title' => $faker->sentence(4),
+            'course' => $faker->name,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
     }
 }
+

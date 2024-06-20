@@ -35,20 +35,21 @@ class DatabaseSeeder extends Seeder
             User::factory(30)->create();
             City::factory(30)->create();
             Client::factory(30)->create();
+            Course::factory(30)->create();
             Student::factory(30)->create();
             //  $this->call([
             //     ClientSeeder::class,
-            $students = Student::factory()->count(50)->create();
-            $courses = Course::factory()->count(30)->create();
-            $students->each(function ($student) use ($courses) {
-                $student->courses()->attach($courses->random(rand(1, 3))->pluck('id'));
-            });
+            // $students = Student::factory()->count(30)->create();
+            // $courses = Course::factory()->count(30)->create();
+            // $students->each(function ($student) use ($courses) {
+            //     $student->courses()->attach($courses->random(rand(1, 3))->pluck('id'));
+          //  });
             // ]);
 
 
-            $this->call([
-                CourseSeeder::class,
-            ]);
+            // $this->call([
+            //     CourseSeeder::class,
+            // ]);
 
             // User::factory()->create([
             //     'name' => 'Test User',

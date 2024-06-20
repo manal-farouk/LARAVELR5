@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('first_name', 100);
             $table->string('last_name', 100);
+            $table->foreignId('course_id')->constrained('courses');
             $table->tinyInteger('age');
             $table->timestamps();
             $table->softDeletes();
 
-            
+
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clients');
+        Schema::dropIfExists('students');
     }
 };

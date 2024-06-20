@@ -18,10 +18,10 @@ class StudentFactory extends Factory
     public function definition(): array
     {
          return [
-        'StudentName' => $this->faker->name(),
-        'age' => $this->faker->numberBetween(30 , 60),
-        'phone' => $this->faker->phoneNumber(),
-        'email' => $this->faker->unique()->safeEmail(),
+        'first_name' => $this->faker->name(),
+        'last_name' => $this->faker->name(),
+        'course_id' => $this->faker->numberBetween(1, 30),
+        'age' => $this->faker->numberBetween(18 , 60),
     ];
     }
 }
